@@ -40,14 +40,17 @@ def update(headers) -> None:
             ids_to_modify = get_crimes_modified_to_update_in_db(crimes_antigos, crimes)
             print(ids_to_modify)
             
+            print(crimes_antigos)
+            print(crimes)
             
-            for i in ids_to_modify['out']:
-                print(f"out: {i}")
-                cursor.execute("DELETE FROM TB_CRIMES_COMETIDOS WHERE TB_CRIMINOSOS_ID=:idcriminoso AND TB_CRIMES_ID=:idcrime", [id, i])
-            
-            for i in ids_to_modify['in']:
-                print(f"in: {i}")
-                cursor.execute("INSERT INTO TB_CRIMES_COMETIDOS VALUES (:idcriminoso, :idcrime)", [id, i])
+            if crimes_antigos != crimes:
+                for i in ids_to_modify['out']:
+                    print(f"out: {i}")
+                    cursor.execute("DELETE FROM TB_CRIMES_COMETIDOS WHERE TB_CRIMINOSOS_ID=:idcriminoso AND TB_CRIMES_ID=:idcrime", [id, i])
+                
+                for i in ids_to_modify['in']:
+                    print(f"in: {i}")
+                    cursor.execute("INSERT INTO TB_CRIMES_COMETIDOS VALUES (:idcriminoso, :idcrime)", [id, i])
             
             connection.connection.commit()
             

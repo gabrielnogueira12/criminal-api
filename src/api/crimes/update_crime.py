@@ -12,8 +12,7 @@ def update_crime(headers) -> str:
         try:
 
             cursor.execute(
-                "UPDATE TB_CRIMES SET nm_crimes = :nm, ds_crimes = :descricao" \
-                "WHERE id = :id",
+                "UPDATE TB_CRIMES SET nm_crime = :nm, ds_crime = :descricao WHERE id = :id",
                 [nome, descricao, id]
             )
             

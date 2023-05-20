@@ -11,7 +11,7 @@ def register_crime(headers) -> str:
         try:
 
             cursor.execute(
-                "INSERT INTO TB_CRIMES (nm_crimes, ds_crimes) " \
+                "INSERT INTO TB_CRIMES (nm_crime, ds_crime) " \
                 "VALUES(:nm, :descricao)",
                 [nome, descricao]
             )

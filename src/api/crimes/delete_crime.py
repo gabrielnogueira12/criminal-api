@@ -9,11 +9,11 @@ def delete_crime(headers) -> str:
             id = headers.get('id')
             
             cursor.execute(
-                "DELETE FROM TB_CRIMES_COMETIDOS WHERE TB_CRIMES_ID = :id", [id]        
+                "DELETE FROM TB_CRIMES_COMETIDOS WHERE TB_CRIMES_id = :id", [id]        
             )
             
             cursor.execute(
-                "DELETE FROM TB_CRIMES_ID WHERE id = :id", [id]        
+                "DELETE FROM TB_CRIMES WHERE id = :id", [id]        
             )
             
             connection.connection.commit()

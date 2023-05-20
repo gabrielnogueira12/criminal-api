@@ -8,15 +8,17 @@ from src.api.crimes.get_crime import search_crime
 from src.api.crimes.register_crime import register_crime
 from src.api.crimes.update_crime import update_crime
 from src.api.crimes.delete_crime import delete_crime
+from src.api.crimes.list_crimes import list_crimes
+
 
 
 app = Flask(__name__)
 
 @app.route('/list-criminals', methods=['GET'])
 def list_all_criminals():
-    list_criminal = list_criminals()
+    listed_criminal = list_criminals()
     
-    return list_criminal
+    return listed_criminal
 
 @app.route('/search-criminal', methods=['GET'])
 def get_criminal_by_id():
@@ -46,28 +48,34 @@ def delete_criminal():
     
     return deleted_criminal
 
-@app.route('/search-crimes', methods=['GET'])
+@app.route('/list-crimes', methods=['GET'])
+def list_all_crimes():
+    listed_crimes = list_crimes()
+    
+    return listed_crimes
+
+@app.route('/search-crime', methods=['GET'])
 def get_crime_by_id():
     args = request.args
     crime = search_crime(args)
     
     return crime
 
-@app.route('/register-crimes', methods=['POST'])
+@app.route('/register-crime', methods=['POST'])
 def register_crimes():
     headers = request.headers
     registered_crimes = register_crime(headers)
     
     return registered_crimes
 
-@app.route('/update-crimes', methods=['POST'])
+@app.route('/update-crime', methods=['POST'])
 def update_crimes():
     headers = request.headers
     updated_crimes = update_crime(headers)
     
     return updated_crimes
 
-@app.route('/delete-crimes', methods=['DELETE'])
+@app.route('/delete-crime', methods=['DELETE'])
 def delete_crimes():
     args = request.args    
     deleted_crimes = delete_crime(args)

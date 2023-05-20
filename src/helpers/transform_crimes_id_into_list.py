@@ -4,4 +4,4 @@ def transform_crimes_into_list(crimes):
     for i in crimes.split(','):
         crimes_list.append(int(i))
     
-    return crimes_list
+    return tuple(crimes_list)
